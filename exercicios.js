@@ -154,3 +154,179 @@ function deepEquals(obj1, obj2) {
 }
 
 
+// Funções de Alta Ordem
+
+function bubble_sort(vetor, criterio){
+    for(let i = 0; i < vetor.length;i++){
+        for(let j = 0; j < (vetor.length - 1); j++){
+            if(criterio(vetor[j], vetor[j+1])){
+                let tmp = vetor[j+1]
+                vetor[j+1] = vetor[j]
+                vetor[j] = tmp
+            }
+        }
+    }
+
+    return vetor
+}
+    
+function criterio_crescente(a, b){
+    return a > b;
+}
+
+
+function criterio_decrescente(a, b){
+    return a < b;
+}
+
+function criterio_crescente_impares(a, b){
+    // Manda os impares pro final
+    if (a % 2 !== 0 && b % 2 !== 0) return a > b;
+    else if (a % 2 !== 0) return true;
+    else return false;
+      
+}
+
+function criterio_decrescente_pares(a, b){
+    // Manda os pares pro final
+    if (a % 2 === 0 && b % 2 === 0) return a < b;
+    else if (a % 2 === 0) return true;
+    else return false;
+      
+}
+
+
+function criptografia(text, cifra){
+    text = text.split('')
+    for(let i = 0; i < text.length; i++){
+        text[i] = cifra(text[i])
+    }
+    return text.join('')
+}
+
+function cifra_de_cezar(c){
+    code = c.charCodeAt(0)
+    d_code = code + 5
+    
+    // Z maiúsculo
+    if(code <= 90){
+        if(d_code > 90){
+            d_code = 64 + (d_code - 90)
+        }
+    }else if(code <= 122){
+        if(d_code > 122){
+            d_code = 96 + (d_code - 122)
+        }
+    }
+
+    return String.fromCharCode(d_code)
+}
+
+function verifica_numero(number, verificador){
+    return verificador(number);
+}
+
+function verifica_impar(number){
+    return number % 2 !== 0;
+}
+
+function verifica_primo(number){
+    number = Math.abs(number)
+    if(number < 2) return false;
+    for(let i = 2; i < number; i++){
+        if(number % i === 0) return false;
+    }
+    return true;
+}
+
+
+
+function transforma_string(text, transformador){
+    text = text.split('')
+    for(let i = 0; i < text.length; i++){
+        text[i] = transformador(text[i])
+    }
+    return text.join('')
+}
+
+
+function transformador_caixa_alta_nas_vogais(c){
+    index = 'aeiouAEIOU'.indexOf(c)
+
+    if(index >= 0) return c.toUpperCase();
+    else return c;
+}
+
+
+function transformador_caixa_alta_nas_consoantes(c){
+    index = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ'.indexOf(c)
+
+    if(index >= 0) return c.toUpperCase();
+    else return c;
+}
+
+function transformador_caixa_baixa_nas_vogais(c){
+    index = 'aeiouAEIOU'.indexOf(c)
+
+    if(index >= 0) return c.toLowerCase();
+    else return c;
+}
+
+function transformador_caixa_baixa_nas_consoantes(c){
+    index = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ'.indexOf(c)
+
+    if(index >= 0) return c.toLowerCase();
+    else return c;
+}
+
+
+function cria_matriz(funcao_matricial, linhas, colunas){
+    let matriz = []
+    for(let i = 0; i < linhas; i++){
+        matriz.push([])
+        for(let j = 0; j < colunas; j++){
+            matriz[i].push(funcao_matricial(i, j))
+        }
+    }
+
+    return matriz
+}
+
+function imprime_matriz(matriz, linhas, colunas){
+    for(let i = 0; i < linhas; i++){
+        let tmp = ''
+        for(let j = 0; j < colunas ;j++){
+            tmp += '' + matriz[i][j] + ' '
+        }
+        console.log(tmp)
+    }
+}
+
+function testa_matriz(){
+    // 
+    
+    let linhas = 5, colunas = 5;
+
+    matriz_soma = (i, j) => i + j;             
+    matriz_mult = (i, j) => i * j;          
+    matriz_ident = (i, j) => i == j ? 1 : 0;            
+    matriz_naosei_1 = (i, j) => (i ** 2)/(j + 1);
+    matriz_naosei_2 = (i, j) => i > j ? 1 : (i < j ? 5 : 0);
+
+    imprime_matriz(cria_matriz(matriz_soma, linhas, colunas), linhas, colunas);
+    
+}
+
+
+function imprime_exemplo(){
+    console.log('\n\n\t\tEXEMPLOS DE EXECUÇÃO DAS FUNÇÕES\n\n') 
+
+    console.log()
+
+}
+
+
+
+
+testa_matriz()
+
