@@ -317,16 +317,3 @@ function testa_matriz(){
     
 }
 
-
-function imprime_exemplo(){
-    console.log('\n\n\t\tEXEMPLOS DE EXECUÇÃO DAS FUNÇÕES\n\n') 
-
-    console.log()
-
-}
-
-
-
-
-testa_matriz()
-
