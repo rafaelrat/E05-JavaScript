@@ -314,6 +314,20 @@ function testa_matriz(){
     matriz_naosei_2 = (i, j) => i > j ? 1 : (i < j ? 5 : 0);
 
     imprime_matriz(cria_matriz(matriz_soma, linhas, colunas), linhas, colunas);
+    console.log('\n\n')
+
+    imprime_matriz(cria_matriz(matriz_mult, linhas, colunas), linhas, colunas);
+    console.log('\n\n')
+
+    imprime_matriz(cria_matriz(matriz_ident, linhas, colunas), linhas, colunas);
+    console.log('\n\n')
+
+    imprime_matriz(cria_matriz(matriz_naosei_1, linhas, colunas), linhas, colunas);
+    console.log('\n\n')
+
+    imprime_matriz(cria_matriz(matriz_naosei_2, linhas, colunas), linhas, colunas);
+    console.log('\n\n')
+
     
 }
 
